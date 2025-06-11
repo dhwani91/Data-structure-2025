@@ -70,6 +70,19 @@ class LinkedList<T> {
             this.head = this.head.next;
        }
    }
+
+   reverse():ListNode<T> | null {
+        if(this.head === null) return;
+        let currentNode = this.head;
+        let prevNode = null;
+        while(currentNode !== null){
+            let tempNode = currentNode.next;
+            currentNode.next = prevNode;
+            prevNode = currentNode;
+            currentNode = tempNode
+     }
+     return prevNode;
+   }
 }
 
 const linkList = new LinkedList<string>();
@@ -78,9 +91,11 @@ linkList.append('b');
 linkList.append('c');
 linkList.append('d');
 linkList.find('c')
-linkList.delete('c');
-linkList.delete('a');
+// linkList.delete('c');
+// linkList.delete('a');
 
 linkList.print()
 console.log("$$linkList",linkList)
-console.log("$$linkList",linkList)
+
+linkList.reverse()
+console.log("$$linkList-reverse",linkList)
